@@ -1,0 +1,60 @@
+{
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uv-(.*)": "@climblee/uv-ui/components/uv-$1/uv-$1.vue"
+		}
+	},
+	"tabBar": {
+		"color": "#61666B",
+		"fontSize": "20rpx",
+		"selectedColor": "#3C9CFF",
+		"iconWidth": "48rpx",
+		"borderStyle": "white",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"iconPath": "static/images/icon_tab_home_unselected.png",
+			"selectedIconPath": "static/images/icon_tab_home_selected.png",
+			"text": "首页"
+		},
+		{
+			"pagePath": "pages/user/index",
+			"iconPath": "static/images/icon_tab_user_unselected.png",
+			"selectedIconPath": "static/images/icon_tab_user_selected.png",
+			"text": "个人中心"
+		}]
+	},
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/detail/index",
+			"needLogin": true,
+			"style": {
+				"navigationBarTitleText": "详情"
+			}
+		},
+		{
+			"path": "pages/login/index",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
