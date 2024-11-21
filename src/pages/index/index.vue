@@ -5,6 +5,7 @@
 
 <script setup>
 const toDetail = () => uni.navigateTo({ url: '/pages/detail/index' })
+
 </script>
 
 <style lang="scss" scoped>
