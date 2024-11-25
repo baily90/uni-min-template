@@ -1,4 +1,10 @@
 <script setup>
+import { useAppStore } from '@/stores/modules/app'
+const {
+  setWindowInfo,
+  setCapsuleInfo
+} = useAppStore()
+
 onLaunch(() => {
   console.log('App Launch')
   // 检查小程序是否有新版本
@@ -107,15 +113,12 @@ const onCheckNetwork = () => {
  * xxx
  */
 const initGlobalOptions = () => {
-  // uni.getSystemInfo({
-  //   success: res => {
-  //     system.value = res
-  //   }
-  // })
-  // capsule.value = uni.getMenuButtonBoundingClientRect()
+  setWindowInfo(uni.getWindowInfo())
+  setCapsuleInfo(uni.getMenuButtonBoundingClientRect())
 }
 </script>
 
-<style>
+<style lang="scss">
 /*每个页面公共css */
+@import '@climblee/uv-ui/index.scss';
 </style>

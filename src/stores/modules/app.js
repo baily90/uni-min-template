@@ -1,7 +1,15 @@
-const initState = { nickname: '', avatar: '' }
+const initState = {
+  userId: undefined,
+  accessToken: undefined,
+  refreshToken: undefined,
+  expiresTime: undefined,
+  openid: undefined
+}
 
 export const useAppStore = defineStore('app', () => {
   const userInfo = ref({ ...initState }) // 登录用户信息
+  const windowInfo = ref(null) // 窗口信息
+  const capsuleInfo = ref(null) // 胶囊信息
   const setUserInfo = (data) => {
     userInfo.value = data
   }
@@ -9,9 +17,26 @@ export const useAppStore = defineStore('app', () => {
     userInfo.value = { ...initState }
   }
 
-  const isLogined = computed(() => !!userInfo.value.token)
+  const setWindowInfo = (data) => {
+    windowInfo.value = data
+  }
 
-  return { isLogined, userInfo, setUserInfo, clearUserInfo }
+  const setCapsuleInfo = (data) => {
+    capsuleInfo.value = data
+  }
+
+  const isLogined = computed(() => !!userInfo.value.accessToken)
+
+  return {
+    isLogined,
+    userInfo,
+    windowInfo,
+    capsuleInfo,
+    setUserInfo,
+    clearUserInfo,
+    setWindowInfo,
+    setCapsuleInfo
+  }
 }, {
   unistorage: true
 })

@@ -10,8 +10,8 @@ const httpInterceptor = {
     }
     const { isLogined, userInfo } = useAppStore()
     if (isLogined) {
-      const { token } = userInfo
-      options.header.Authorization = `Bearer ${token}`
+      const { accessToken } = userInfo
+      options.header.Authorization = `Bearer ${accessToken}`
     }
   }
 }

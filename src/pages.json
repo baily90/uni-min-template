@@ -12,29 +12,47 @@
 		"iconWidth": "48rpx",
 		"borderStyle": "white",
 		"list": [{
-			"pagePath": "pages/index/index",
+			"pagePath": "pages/home/index",
 			"iconPath": "static/images/icon_tab_home_unselected.png",
 			"selectedIconPath": "static/images/icon_tab_home_selected.png",
-			"text": "首页"
+			"text": "任务"
 		},
 		{
-			"pagePath": "pages/user/index",
+			"pagePath": "pages/message/index",
+			"iconPath": "static/images/icon_tab_message_unselected.png",
+			"selectedIconPath": "static/images/icon_tab_message_selected.png",
+			"text": "消息"
+		},
+		{
+			"pagePath": "pages/my/index",
 			"iconPath": "static/images/icon_tab_user_unselected.png",
 			"selectedIconPath": "static/images/icon_tab_user_selected.png",
-			"text": "个人中心"
+			"text": "我的"
 		}]
 	},
 	"pages": [
 		{
-			"path": "pages/index/index",
+			"path": "pages/home/index",
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
 		},
 		{
-			"path": "pages/user/index",
+			"path": "pages/message/index",
+			"style": {
+				"navigationBarTitleText": "通知"
+			}
+		},
+		{
+			"path": "pages/my/index",
 			"style": {
 				"navigationBarTitleText": "个人中心"
+			}
+		},
+		{
+			"path": "pages/location/index",
+			"style": {
+				"navigationBarTitleText": "常用地址"
 			}
 		},
 		{
