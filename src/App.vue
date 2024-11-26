@@ -9,8 +9,6 @@ onLaunch(() => {
   console.log('App Launch')
   // 检查小程序是否有新版本
   onCheckForUpdate()
-  // 检查网络状态
-  onCheckNetwork()
   // 初始化一些公共参数
   initGlobalOptions()
 })
@@ -79,36 +77,6 @@ const onCheckForUpdate = () => {
 }
 
 /**
- * 检测网络状态
- */
-const onCheckNetwork = () => {
-  uni.getNetworkType({
-    success (res) {
-      const networkType = res.networkType
-      if (networkType === 'none') {
-        uni.showToast({
-          title: '当前无网络',
-          icon: 'loading',
-          duration: 2000
-        })
-      }
-    }
-  })
-
-  uni.onNetworkStatusChange(res => {
-    if (!res.isConnected) {
-      uni.showToast({
-        title: '网络已断开',
-        icon: 'loading',
-        duration: 2000
-      })
-    } else {
-      uni.hideToast()
-    }
-  })
-}
-
-/**
  * 初始化系统参数
  * xxx
  */
@@ -121,4 +89,7 @@ const initGlobalOptions = () => {
 <style lang="scss">
 /*每个页面公共css */
 @import '@climblee/uv-ui/index.scss';
+.uv-overlay {
+  z-index: 9999;
+}
 </style>

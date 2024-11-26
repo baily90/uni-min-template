@@ -1,8 +1,8 @@
 <template>
-  <view>
+  <Page class="test">
     <uv-button @click="toDetail">详情</uv-button>
     <Location @change="onChange"/>
-  </view>
+  </Page>
 </template>
 
 <script setup>
@@ -15,5 +15,5 @@ const onChange = (res) => {
 </script>
 
 <style lang="scss" scoped>
-
+@import './index.scss'
 </style>

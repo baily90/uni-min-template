@@ -38,10 +38,10 @@ const onChooseLocation = () => {
           }
         } else {
           openLocationSetting()
-          uni.showToast({
-            title: '请允许使用位置信息',
-            icon: 'none'
-          })
+          // uni.showToast({
+          //   title: '请允许使用位置信息',
+          //   icon: 'none'
+          // })
         }
       }
     })
