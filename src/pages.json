@@ -50,12 +50,6 @@
 			}
 		},
 		{
-			"path": "pages/location/index",
-			"style": {
-				"navigationBarTitleText": "常用地址"
-			}
-		},
-		{
 			"path": "pages/detail/index",
 			"needLogin": true,
 			"style": {

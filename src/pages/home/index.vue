@@ -1,27 +1,16 @@
 <template>
   <view>
     <uv-button @click="toDetail">详情</uv-button>
-    <uv-button @click="toLocation">常用地址</uv-button>
+    <Location @change="onChange"/>
   </view>
 </template>
 
 <script setup>
+import Location from './components/Location'
 const toDetail = () => uni.navigateTo({ url: '/pages/detail/index' })
 
-const toLocation = () => {
-  uni.getLocation({
-    type: 'wgs84',
-    success (res) {
-      console.log('当前位置的经度：' + res.longitude)
-      console.log('当前位置的纬度：' + res.latitude)
-    },
-    fail (err) {
-      console.log(err)
-    },
-    complete () {
-      uni.navigateTo({ url: '/pages/location/index' })
-    }
-  })
+const onChange = (res) => {
+  console.log('onChange', res)
 }
 </script>
 
