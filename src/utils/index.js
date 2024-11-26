@@ -150,7 +150,6 @@ export const getPages = (key = 'needLogin') => {
       })
   })
   const result = [...pages, ...subPages]
-  console.log(`getPages by ${key} result: `, result)
   return result
 }
 

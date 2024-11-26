@@ -6,7 +6,7 @@
  * @returns
  */
 export default function useListQuery (fetchAPI, params = {}, immediate = true) {
-  const status = ref('')
+  const status = ref('loadmore')
   const triggered = ref(false)
 
   const searchParams = ref({
@@ -23,11 +23,11 @@ export default function useListQuery (fetchAPI, params = {}, immediate = true) {
   })
 
   const isEmptyBoxShow = computed(() => {
-    return dataSource.value.pageNo === 1 && dataSource.value.list.length === 0 && status.value !== 'loading'
+    return dataSource.value.pageNo === 1 && dataSource.value.list?.length === 0 && status.value !== 'loading'
   })
 
   const isLoadingBarShow = computed(() => {
-    return dataSource.value.list.length > 0
+    return dataSource.value.list?.length > 0
   })
 
   const fetchData = async () => {
@@ -44,9 +44,9 @@ export default function useListQuery (fetchAPI, params = {}, immediate = true) {
           dataSource.value.list = [...dataSource.value.list, ...data.list]
         }
         if (data.total > dataSource.value.list?.length) {
-          status.value = 'more'
+          status.value = 'loadmore'
         } else {
-          status.value = 'noMore'
+          status.value = 'nomore'
         }
       }
     } catch (error) {
@@ -54,7 +54,7 @@ export default function useListQuery (fetchAPI, params = {}, immediate = true) {
       dataSource.value.list = []
       dataSource.value.pageNo = 1
       dataSource.value.pageSize = 20
-      status.value = 'noMore'
+      status.value = 'nomore'
     } finally {
       triggered.value = false
     }

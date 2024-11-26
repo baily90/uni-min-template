@@ -14,11 +14,9 @@ export const request = (options) => {
           })
           reject(res.message || '接口异常')
         } else if (res.data && res.data.code === 401) {
-          // 401错误  -> 清理用户信息，跳转到登录页
           const userStore = useAppStore()
           userStore.clearUserInfo()
           uni.navigateTo({ url: '/pages/login/login' })
-          // reject(res.data)
         } else if (res.data && res.data.code !== 0) {
           uni.showToast({
             icon: 'none',
@@ -42,11 +40,6 @@ export const request = (options) => {
 
 export const uploadFile = (options) => {
   return new Promise((resolve, reject) => {
-    // const { tempFilePaths } = e
-    // if (tempFilePaths[0]) {
-    // // 微信存储的临时路径
-    // const tempFilePath = tempFilePaths[0]
-
     uni.uploadFile({
       ...options,
       success: (res) => {

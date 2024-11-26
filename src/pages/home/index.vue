@@ -11,28 +11,41 @@
           scroll-y="true"
           refresher-enabled="true"
           :refresher-triggered="triggered"
-          @refresherrefresh="onRefresh">
-          <up-button @click="toDetail">详情</up-button>
+          @refresherrefresh="onRefresh"
+          @scrolltolower="scrollLower">
+          <up-button @click="toDetail">去详情</up-button>
           <Location @change="onChange"/>
           <up-button openType="share">分享</up-button>
+          <view class="list-item" style="height: 300rpx;" v-for="item in dataSource?.list" :key="item">{{item}}</view>
+          <up-empty v-if="isEmptyBoxShow" icon="http://cdn.uviewui.com/uview/empty/car.png"></up-empty>
+          <up-loadmore v-if="isLoadingBarShow" :status="status" />
         </scroll-view>
       </view>
     </view>
-
   </BasePage>
 </template>
 
 <script setup>
+import { apiGetTaskList } from '@/api/task'
+import useListQuery from '@/hooks/useListQuery'
 import Location from './components/Location'
 
-const triggered = ref(false)
+const {
+  status,
+  triggered,
+  dataSource,
+  searchParams,
+  isEmptyBoxShow,
+  isLoadingBarShow,
+  onRefresh,
+  scrollLower
+} = useListQuery(apiGetTaskList, {}, false)
 
-const onRefresh = () => {
-  triggered.value = true
-  setTimeout(() => {
-    triggered.value = false
-  }, 1000)
-}
+onShow(() => {
+  searchParams.value.test = 111
+  onRefresh()
+})
+
 const toDetail = () => uni.navigateTo({ url: '/pages/detail/index' })
 
 const onChange = (res) => {
