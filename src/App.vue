@@ -12,8 +12,17 @@ onLaunch(() => {
   // 初始化一些公共参数
   initGlobalOptions()
 })
-onShow(() => {
-  console.log('App onShow')
+onShow((options) => {
+  console.log('App onShow', options)
+  if (typeof options.referrerInfo.extraData !== 'undefined') {
+    if (options.referrerInfo.extraData.callbackObj.from === 'esign') {
+      // 如果客户需要进行跳转的话，可以在这边处理，跳转到自己的小程序某个页面
+      uni.showToast({
+        title: 'esign回调',
+        icon: 'none'
+      })
+    }
+  }
 })
 onHide(() => {
   console.log('App onHide')
@@ -88,8 +97,10 @@ const initGlobalOptions = () => {
 
 <style lang="scss">
 /*每个页面公共css */
-@import '@climblee/uv-ui/index.scss';
-.uv-overlay {
-  z-index: 9999;
+@import "uview-plus/index.scss";
+
+.safe-bottom {
+  padding-bottom: constant(safe-area-inset-bottom) !important;
+  padding-bottom: env(safe-area-inset-bottom) !important;
 }
 </style>

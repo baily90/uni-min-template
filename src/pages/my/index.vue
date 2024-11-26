@@ -1,6 +1,11 @@
 <template>
-  是否登录：{{isLogined}}
-  <uv-button v-if="isLogined" @click="logout">退出登录</uv-button>
+  <BasePage>
+    <view class="container-my">
+      <BaseNavbar>个人中心</BaseNavbar>
+      是否登录：{{isLogined}}
+      <up-button v-if="isLogined" @click="logout">退出登录</up-button>
+    </view>
+  </BasePage>
 </template>
 
 <script setup>
@@ -16,5 +21,5 @@ const logout = () => {
 </script>
 
 <style lang="scss" scoped>
-
+@import './index.scss'
 </style>

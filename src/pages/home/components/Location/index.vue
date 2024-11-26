@@ -1,7 +1,7 @@
 <template>
-  <uv-button @click="onChooseLocation">
+  <up-button @click="onChooseLocation">
     {{locationName ? `${locationName}` : '常用地址'}}
-  </uv-button>
+  </up-button>
 </template>
 
 <script setup>
@@ -26,7 +26,8 @@ const onChooseLocation = () => {
             chooseLocation(location.value)
           } else {
             uni.getLocation({
-              type: 'wgs84',
+              isHighAccuracy: true,
+              type: 'gcj02',
               success (res) {
                 location.value = { longitude: res.longitude, latitude: res.latitude }
                 chooseLocation(location.value)
@@ -53,7 +54,8 @@ const openLocationSetting = () => {
     success (res) {
       if (res.authSetting['scope.userLocation']) {
         uni.getLocation({
-          type: 'wgs84',
+          isHighAccuracy: true,
+          type: 'gcj02',
           success (res) {
             location.value = { longitude: res.longitude, latitude: res.latitude }
             chooseLocation(location.value)

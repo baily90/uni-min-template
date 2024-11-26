@@ -1,5 +1,5 @@
 import { login } from '@/api/login'
-import { useAppStore } from '../stores/modules/app'
+import { useAppStore } from '@/stores/modules/app'
 const getLoginCode = () => new Promise(resolve => {
   uni.login({
     success (res) {
