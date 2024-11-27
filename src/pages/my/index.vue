@@ -16,7 +16,7 @@ const appStore = useAppStore()
 const { isLogined } = storeToRefs(appStore)
 
 const logout = () => {
-  appStore.clearUserInfo()
+  appStore.clearLoginInfo()
 }
 </script>
 

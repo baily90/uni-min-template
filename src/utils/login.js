@@ -16,7 +16,7 @@ export const wxlogin = (phoneCode) => new Promise(resolve => {
     login({ phoneCode, loginCode }).then(res => {
       if (res.code === 0) {
         const appStore = useAppStore()
-        appStore.setUserInfo(res.data)
+        appStore.setLoginInfo(res.data)
         resolve(res.data)
       }
     })

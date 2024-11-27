@@ -15,7 +15,7 @@ export const request = (options) => {
           reject(res.message || '接口异常')
         } else if (res.data && res.data.code === 401) {
           const userStore = useAppStore()
-          userStore.clearUserInfo()
+          userStore.clearLoginInfo()
           uni.navigateTo({ url: '/pages/login/login' })
         } else if (res.data && res.data.code !== 0) {
           uni.showToast({

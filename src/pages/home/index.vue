@@ -4,7 +4,7 @@
       <BaseNavbar
         background="#f5f5f5 url('https://common-mzt-public.weicha88.com/distributor-mini/static/bg_home.png') no-repeat top center"
         theme="light"
-        :showDefaultBack="false">首页</BaseNavbar>
+        :showDefaultBack="false">首页-{{isLogined ? (userInfo.type === 1 ? '兼职' : '全职') : '未登录'}}</BaseNavbar>
       <view class="scroll-wrap">
         <scroll-view
           class="scroll"
@@ -26,9 +26,12 @@
 </template>
 
 <script setup>
+import { useAppStore } from '@/stores/modules/app'
 import { apiGetTaskList } from '@/api/task'
 import useListQuery from '@/hooks/useListQuery'
 import Location from './components/Location'
+
+const appStore = useAppStore()
 
 const {
   status,
@@ -38,13 +41,17 @@ const {
   isEmptyBoxShow,
   isLoadingBarShow,
   onRefresh,
-  scrollLower
+  scrollLower,
+  fetchData
 } = useListQuery(apiGetTaskList, {}, false)
 
-onShow(() => {
-  searchParams.value.test = 111
-  onRefresh()
-})
+const {
+  isLogined,
+  userInfo
+} = storeToRefs(appStore)
+
+searchParams.value.test = 111
+fetchData()
 
 const toDetail = () => uni.navigateTo({ url: '/pages/detail/index' })
 

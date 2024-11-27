@@ -8,9 +8,9 @@ const httpInterceptor = {
       ...options.header,
       platform: 'mp-weixin'
     }
-    const { isLogined, userInfo } = useAppStore()
+    const { isLogined, loginInfo } = useAppStore()
     if (isLogined) {
-      const { accessToken } = userInfo
+      const { accessToken } = loginInfo
       options.header.Authorization = `Bearer ${accessToken}`
     }
   }

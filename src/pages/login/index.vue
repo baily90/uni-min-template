@@ -22,15 +22,20 @@ const onGetPhoneNumber = (e) => {
     // 拿参数去服务端 服务端去调微信查手机号，需要收费0.03元/次
     const { code: phoneCode, encryptedData, iv } = e.detail
     // wxlogin(phoneCode).then(res => {
-    //   appStore.setUserInfo(res)
+    //   appStore.setLoginInfo(res)
     //   uni.redirectTo({ url: redirect.value })
     // })
-    appStore.setUserInfo({
+    appStore.setLoginInfo({
       userId: '000',
       accessToken: '111',
       refreshToken: '222',
       expiresTime: '333',
       openid: '444'
+    })
+    appStore.setUserInfo({
+      nickName: '小花',
+      avatarUrl: 'https://sit-common-mzt-public.weicha88.com/7ce0a999533be56bf2b085956f342630afb19538d5a43aec974ca5e61c0dee8f.png',
+      type: 2 // 1-兼职 2-全职
     })
     uni.redirectTo({ url: redirect.value })
   }
